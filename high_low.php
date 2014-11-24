@@ -70,38 +70,93 @@
 
 
 
-$ranNum = mt_rand(1, 100);
-$numGuess = 0;
+// $ranNum = mt_rand(1, 100);
+// $numGuess = 0;
 
-fwrite(STDOUT, "Our random number is {$ranNum}\n");
+// fwrite(STDOUT, "Our random number is {$ranNum}\n");
 
-do {
-	fwrite(STDOUT, "Please guess a number: ");
-	$guess = trim(fgets(STDIN));
-	$numGuess++;
+// do {
+// 	fwrite(STDOUT, "Please guess a number: ");
+// 	$guess = trim(fgets(STDIN));
+// 	$numGuess++;
 
-	if (is_numeric($guess)) {
+// 	if (is_numeric($guess)) {
 
-		if ($guess > $ranNum) {
-			fwrite(STDOUT, "LOWER \n");
-		} 
+// 		if ($guess > $ranNum) {
+// 			fwrite(STDOUT, "LOWER \n");
+// 		} 
 
-		elseif ($guess < $ranNum) {
-			fwrite(STDOUT, "HIGHER \n");
-		}
-	}
-	else {
-		fwrite(STDOUT, "I said numeric. Try again.\n");
-		}
+// 		elseif ($guess < $ranNum) {
+// 			fwrite(STDOUT, "HIGHER \n");
+// 		}
+// 	}
+// 	else {
+// 		fwrite(STDOUT, "I said numeric. Try again.\n");
+// 		}
 		
 
-} while ($guess != $ranNum);
+// } while ($guess != $ranNum);
 
-fwrite(STDOUT, "Good Guess!!\n");
-fwrite(STDOUT, "Number of guesses: {$numGuess}\n");
+// fwrite(STDOUT, "Good Guess!!\n");
+// fwrite(STDOUT, "Number of guesses: {$numGuess}\n");
+
+
+// exit(0);
+
+
+// Adds Passing Arguments
+
+
+if ($argc == 3 && is_numeric($argv[1]) && is_numeric($argv[2])) {
+	echo "Good to go!!\n";
+	// echo "$argv[1]\n";
+	// echo "$argv[2]\n";
+
+	$low = trim($argv[1]);
+	$high = trim($argv[2]);
+
+	echo "$low\n";
+	echo "$high\n";
+
+	$ranNum = rand($low, $high);
+	$numGuess = 0;
+
+	fwrite(STDOUT, "Our low range is {$low}\n");	
+	fwrite(STDOUT, "Our high range is {$high}\n");
+	fwrite(STDOUT, "Our random number is {$ranNum}\n");
+
+	
+	do {
+
+		fwrite(STDOUT, "Please guess a number: ");
+		$guess = trim(fgets(STDIN));
+		$numGuess++;
+
+		if (is_numeric($guess)) {
+
+			if ($guess > $ranNum) {
+				fwrite(STDOUT, "LOWER \n");
+			} 
+
+			elseif ($guess < $ranNum) {
+				fwrite(STDOUT, "HIGHER \n");
+			}
+		}
+	else {
+		fwrite(STDOUT, "I said numeric. Try again.\n");
+		}	
+
+	} while ($guess != $ranNum);
+
+	fwrite(STDOUT, "Good Guess!!\n");
+	fwrite(STDOUT, "Number of guesses: {$numGuess}\n");
+
+}
+
+else {
+	echo "WRONG! Geez, you couldn't even do that right?!\n";
+}
+
 
 
 exit(0);
-
-
-

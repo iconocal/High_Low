@@ -21,6 +21,9 @@
 
 // exit(0);
 
+// ************************************
+// uses mt_rand instead of rand
+// ************************************
 
 // $ranNum = mt_rand(1, 100);
 
@@ -42,7 +45,9 @@
 
 // exit(0);
 
-
+// ************************************
+// adds guess count
+// ************************************
 
 // $ranNum = mt_rand(1, 100);
 // $numGuess = 0;
@@ -68,7 +73,9 @@
 
 // exit(0);
 
-
+// ************************************
+// adds is_numeric() and trim functions
+// ************************************
 
 // $ranNum = mt_rand(1, 100);
 // $numGuess = 0;
@@ -108,22 +115,21 @@
 
 
 if ($argc == 3 && is_numeric($argv[1]) && is_numeric($argv[2])) {
-	echo "Good to go!!\n";
-	// echo "$argv[1]\n";
-	// echo "$argv[2]\n";
+		echo "Good to go!!\n";
+		
 
-	$low = trim($argv[1]);
-	$high = trim($argv[2]);
+		$low = min($argv[1], $argv[2]);
+		$high = max($argv[1], $argv[2]);
 
-	echo "$low\n";
-	echo "$high\n";
+		echo "$low\n";
+		echo "$high\n";
 
-	$ranNum = rand($low, $high);
-	$numGuess = 0;
+		$ranNum = rand($low, $high);
+		$numGuess = 0;
 
-	fwrite(STDOUT, "Our low range is {$low}\n");	
-	fwrite(STDOUT, "Our high range is {$high}\n");
-	fwrite(STDOUT, "Our random number is {$ranNum}\n");
+		fwrite(STDOUT, "Our low range is {$low}\n");	
+		fwrite(STDOUT, "Our high range is {$high}\n");
+		fwrite(STDOUT, "Our random number is {$ranNum}\n");
 
 	
 	do {
